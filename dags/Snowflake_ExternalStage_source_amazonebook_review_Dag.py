@@ -5,7 +5,7 @@ from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python_operator import PythonOperator
 from utility.database_helper import database_helper,snowflake_helper
-from utility.utility import get_lastextract_mysql, update_mysql_config, upload_data_to_s3
+from utility.utility import get_lastextract_mysql, get_currentdate_extract_mysql, update_mysql_config, upload_data_to_s3
 import json
 
 main_data = {

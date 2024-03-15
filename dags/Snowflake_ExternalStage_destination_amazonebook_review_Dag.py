@@ -5,7 +5,7 @@ from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.amazon.aws.sensors.s3 import S3KeySensor
-from utility.utility import send_email,get_lastextract_snowflake,load_data_to_snowsql_ext_table,load_ext_table_to_snowsql_table,update_snowsql_config
+from utility.utility import send_email, get_lastextract_snowflake, load_data_to_snowsql_ext_table, load_ext_table_to_snowsql_table, update_snowsql_config
 from airflow.models import Variable
 from airflow.utils.trigger_rule import TriggerRule
 
