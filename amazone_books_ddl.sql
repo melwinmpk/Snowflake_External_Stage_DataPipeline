@@ -1,0 +1,42 @@
+USE amazonebooks_external;
+
+USE SCHEMA PUBLIC;
+-- CREATE EXTERNAL STAGE
+CREATE OR REPLACE STAGE amazone_books_ext_stage
+url='s3://lz-snowflake/Snowflake/amazonebooks_external/amazone_books/'
+file_format = (type = 'CSV' field_delimiter = ',' field_optionally_enclosed_by = '"' skip_header = 1)
+STORAGE_INTEGRATION = ACCESS_TO_S3BUCKET;
+
+-- CREATE EXTERNAL TABLE
+CREATE OR REPLACE EXTERNAL TABLE AMAZONE_BOOKS_EXT(
+	BOOK_ID NUMBER(38, 0) AS (value:c1::INTEGER)
+	,BOOK_TITLE VARCHAR(16777216) AS (value:c2::TEXT)
+	,BOOK_AMOUNT FLOAT AS (value:c3::FLOAT)
+	,BOOK_AUTHOR VARCHAR(16777216) AS (value:c4::TEXT)
+	,BOOK_RATING FLOAT AS (value:c5::float)
+	,BOOK_LINK VARCHAR(16777216) AS (value:c6::TEXT)
+	,BUSINESS_DATE DATE AS TO_DATE(value:c7::VARCHAR,'YYYY-MM-DD')
+    ,FILE_DATE_PARTITION NUMBER(10,0) as (split_part(METADATA$FILENAME,'/',4)::int)
+)
+PARTITION BY (FILE_DATE_PARTITION)
+WITH LOCATION = @amazone_books_ext_stage
+FILE_FORMAT = (TYPE = CSV field_delimiter = ',' field_optionally_enclosed_by = '"'  SKIP_HEADER = 1);
+
+Select METADATA$FILENAME as FileName , split_part(METADATA$FILENAME,'/',4) as Partition_Name FROM @amazone_books_ext_stage limit 10;
+
+-- CREATE TABLE
+CREATE OR REPLACE TRANSIENT TABLE AMAZONE_BOOKS (
+	BOOK_ID NUMBER(38, 0) NOT NULL
+	,BOOK_TITLE VARCHAR(16777216)
+	,BOOK_AMOUNT FLOAT
+	,BOOK_AUTHOR VARCHAR(16777216)
+	,BOOK_RATING FLOAT
+	,BOOK_LINK VARCHAR(16777216)
+	,BUSINESS_DATE DATE
+    ,FILE_DATE_PARTITION NUMBER(10,0)
+	);
+
+
+INSERT INTO CONFIG.TABLE_CONFIG VALUES ('amazone_books','2024-02-26');
+INSERT INTO CONFIG.TBL_PRIMARY_KEY VALUES ('amazone_books', 'BOOK_ID',1,1);
+
