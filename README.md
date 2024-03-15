@@ -42,6 +42,63 @@
 <li>Enhance monitoring and alerting for pipeline operations.</li>
 </ul>
 
+<H3>Source Data</H3>
+<p>There are 2 tables which are getting ingested to Snowflake.</p>
+<p>Dedicated Dags are developed for each Table</p>
+<ol>
+	<li>amazone_books</li>
+	<li>amazonebook_reviews </li>
+</ol>
+<h4>Source Table DDls</h4>
+<pre>
+CREATE TABLE amazone_books (
+	book_id INT NOT NULL AUTO_INCREMENT
+	,book_title TEXT
+	,book_amount FLOAT
+	,book_author TEXT
+	,book_rating FLOAT
+	,book_link TEXT
+	,business_date DATE DEFAULT(CURRENT_DATE)
+	,PRIMARY KEY (book_id)
+	);
+
+CREATE TABLE amazonebook_reviews (
+	book_id INT NOT NULL
+	,reviewer_name TEXT
+	,rating FLOAT
+	,review_title TEXT
+	,review_content TEXT
+	,reviewed_on DATE
+ 	,business_date DATE DEFAULT(CURRENT_DATE)
+	);
+</pre>
+<p> For the Incremental load. Primary Keys are required in the Tables. Respective Primary key for the Table are</p>
+<ul>
+	<li>amazone_books</li>
+	<ul>
+		<li>book_id</li>
+	</ul>	
+	<li>amazonebook_reviews</li>
+	<ul>
+		<li>book_id</li>
+		<li>reviewer_name</li>
+		<li>business_date</li>
+	</ul>
+		
+</ul>	
+<p> Note: This Source Data is from another Project. To know more about how source data is generated please refer <a href='https://github.com/melwinmpk/AmazonBooks_DataPipeline?tab=readme-ov-file#amazonbookdata_datapipeline'>AmazonBooks_DataPipeline</a>  </p>
+<p>The Airflow Dag Ids for respective Tables are</p>
+<ul>
+	<li>amazone_books</li>
+	<ul>
+		<li>Snowflake_InternalStage_amazone_books_Dag</li>
+	</ul>	
+	<li>amazonebook_reviews</li>
+	<ul>
+		<li>Snowflake_InternalStage_amazonebook_review_Dag</li>
+	</ul>	
+</ul>
+
 <h2>Source System</h2>
 <img width="800" alt="image" src="https://github.com/melwinmpk/AmazonBooks_DataPipeline/assets/25386607/0f4df5d8-d40f-4c9e-9aa5-1d0380733607">
 <h2>Target System</h2>
