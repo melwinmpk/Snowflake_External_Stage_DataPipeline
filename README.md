@@ -100,8 +100,8 @@ CREATE TABLE amazonebook_reviews (
 	</ul>	
 </ul>
 
-<H3>For Data Ingesition Using AWS Lambda Services Please refer <a href='https://github.com/melwinmpk/Snowflake_External_Stage_DataPipeline/blob/main/amazone_books.md'>amazone_books.md</a> </H3>
-<H3>For Data Ingesition Using Airflow Services Please refer <a href='https://github.com/melwinmpk/Snowflake_External_Stage_DataPipeline/blob/main/amazonebook_review.md'>amazonebook_review.md</a> </H3>
+<H3>For Detail Understanding Data Ingestion Using AWS Lambda Services Please refer <a href='https://github.com/melwinmpk/Snowflake_External_Stage_DataPipeline/blob/main/amazone_books.md'>amazone_books.md</a> </H3>
+<H3>For Detail Understanding Data Ingestion Using Airflow Services Please refer <a href='https://github.com/melwinmpk/Snowflake_External_Stage_DataPipeline/blob/main/amazonebook_review.md'>amazonebook_review.md</a> </H3>
 
 <h2>Source System</h2>
 <img width="800" alt="image" src="https://github.com/melwinmpk/AmazonBooks_DataPipeline/assets/25386607/0f4df5d8-d40f-4c9e-9aa5-1d0380733607">
