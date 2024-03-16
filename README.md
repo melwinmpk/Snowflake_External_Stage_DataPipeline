@@ -91,11 +91,12 @@ CREATE TABLE amazonebook_reviews (
 <ul>
 	<li>amazone_books</li>
 	<ul>
-		<li>Snowflake_InternalStage_amazone_books_Dag</li>
+		<li>Snowflake_ExternalStage_amazone_books_Dag</li>
 	</ul>	
 	<li>amazonebook_reviews</li>
 	<ul>
-		<li>Snowflake_InternalStage_amazonebook_review_Dag</li>
+		<li>Snowflake_ExternalStage_source_amazonebook_review_Dag</li>
+		<li>Snowflake_ExternalStage_destination_amazonebook_review_Dag</li>
 	</ul>	
 </ul>
 
