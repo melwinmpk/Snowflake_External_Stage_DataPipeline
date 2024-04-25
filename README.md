@@ -4,6 +4,10 @@
 <p>The "Snowflake External Stage Data Pipeline" project automates the data ingestion process from a MySQL database to Snowflake using an External Stage. 
   This project leverages AWS S3 as an intermediary storage solution, showcasing two distinct pipelines for loading data into Snowflake: one utilizing AWS Lambda and the other using Apache Airflow. Incremental loading is a critical feature for efficiently managing data pipelines, as it ensures that only new or modified data is transferred, saving on both processing time and costs.  This approach allows for flexibility and demonstrates various methods of leveraging cloud services for efficient data management.</p>
 
+## Youtube Video
+<a href="https://www.youtube.com/watch?v=uwAWPcVNYic" target="_blank"><img src="https://img.youtube.com/vi/uwAWPcVNYic/0.jpg"></a>
+
+<a href="https://www.youtube.com/watch?v=wnNsa7PKRo8" target="_blank"><img src="https://img.youtube.com/vi/wnNsa7PKRo8/0.jpg"></a>
 
 <H3>Features</H3>
 <ul>
