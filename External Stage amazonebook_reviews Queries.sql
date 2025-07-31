@@ -6,10 +6,10 @@ Select last_extract_date from config.table_config  where table_name = 'amazonebo
 -- Load_data_to_ext_table
 ALTER EXTERNAL TABLE IF EXISTS amazonebook_reviews_ext ADD FILES ('20240301/20240301-amazonebook-reviews.csv');
 
--- Anoth Approach to load the Data to table is by stage amazonebook_reviews_ext_stage
+-- (!if its not an External Table) Another Approach to load the Data to table is by stage amazonebook_reviews_ext_stage
 COPY INTO amazonebook_reviews_ext  FROM @amazonebook_reviews_ext_stage/20240301/20240301-amazonebook-reviews.csv
 
--- to load multiple files from the path
+-- (!if its not an External Table) to load multiple files from the path
 COPY INTO amazonebook_reviews_ext  FROM @amazonebook_reviews_ext_stage/20240301/
 
 -- Load_data_to_table

@@ -265,10 +265,10 @@ def load_data_to_snowsql_ext_table(data,date_partitions):
     for date_partition in date_partitions:
         query = f''' ALTER EXTERNAL TABLE IF EXISTS {ext_table} ADD FILES ('{date_partition}'); '''
          
-        # Another Approach to load the Data to table is by the respective stage name amazonebook_reviews_ext_stage
+        # (!!! if its not an External Table)  Another Approach to load the Data to table is by the respective stage name amazonebook_reviews_ext_stage
         #COPY INTO amazonebook_reviews_ext  FROM @amazonebook_reviews_ext_stage/20240301/20240301-amazonebook-reviews.csv
 
-        # to load multiple files from the path
+        # (!!! if its not an External Table)  to load multiple files from the path
         #COPY INTO amazonebook_reviews_ext  FROM @amazonebook_reviews_ext_stage/20240301/
         
         print(query)
